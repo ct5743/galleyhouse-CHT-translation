@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>加利宅邸懸案 繁體中文化</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500&family=Noto+Serif+TC:wght@700;900&display=swap">
+<style>
+:root{--bg:#eef1f0;--ink:#1d2a2e;--mute:#53656a;--line:#c5cfcd;--accent:#b3262e;--on-accent:#fff;--panel:#e2e8e6}
+@media (prefers-color-scheme:dark){:root{--bg:#161d20;--ink:#e6ecea;--mute:#9db0b3;--line:#2e3b3f;--accent:#e0555c;--on-accent:#161d20;--panel:#1e282b}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1rem/1.85 "Noto Sans TC","Microsoft JhengHei","PingFang TC",sans-serif}
+main{max-width:40rem;margin:0 auto;padding:4rem 1.25rem 5rem}
+h1,h2{font-family:"Noto Serif TC","Microsoft JhengHei","PingFang TC",serif;line-height:1.3;margin:0}
+h1{font-weight:900;font-size:clamp(2.6rem,10vw,4rem);letter-spacing:.04em;border-top:6px solid var(--accent);padding-top:1.2rem}
+h2{font-size:1.35rem;margin:3rem 0 .6rem}
+.stamp{display:inline-block;margin:1rem 0 0;padding:.1rem .7rem;border:2px solid var(--accent);color:var(--accent);font-weight:500;transform:rotate(-2deg)}
+.lead{margin:1.4rem 0 1.6rem;color:var(--mute)}
+.btns{display:flex;flex-wrap:wrap;gap:.75rem}
+a.btn{display:inline-block;padding:.65rem 1.4rem;border:2px solid var(--accent);color:var(--accent);text-decoration:none;font-weight:500}
+a.btn.main{background:var(--accent);color:var(--on-accent)}
+a:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+ol,ul{padding-left:1.4rem;margin:.4rem 0}
+li{margin:.35rem 0}
+code{background:var(--panel);padding:.1rem .35rem;font-size:.92em}
+dl{margin:.4rem 0}
+dt{font-weight:500;margin-top:.7rem}
+dd{margin:0;color:var(--mute)}
+footer{margin-top:3.5rem;padding-top:1rem;border-top:1px solid var(--line);color:var(--mute);font-size:.9rem}
+</style>
+</head>
+<body>
+<main>
+<h1>加利宅邸懸案</h1>
+<span class="stamp">繁體中文化 0.1</span>
+<p class="lead">選好遊戲裡的 <code>galleyhouse.pck</code>，按一下開始。工具會先備份，再把繁體中文翻譯與圖片換進去。</p>
+<div class="btns">
+<a class="btn main" data-gh="/releases/latest">下載修補工具</a>
+<a class="btn" data-gh="">原始碼</a>
+</div>
+
+<h2>使用方式</h2>
+<ol>
+<li>到下載頁取得 <code>GalleryPckPatcher.exe</code> 與 <code>gallery-zh-payload.zip</code>，放在同一個資料夾。</li>
+<li>執行 <code>GalleryPckPatcher.exe</code>。</li>
+<li>選擇遊戲資料夾裡的 <code>galleyhouse.pck</code>。替換包會自動填入。</li>
+<li>按「開始」並確認。完成後啟動遊戲，檢查文字與圖片。</li>
+</ol>
+
+<h2>工具做了什麼</h2>
+<dl>
+<dt>備份</dt><dd>在原檔旁建立 <code>galleyhouse.pck.日期時間.bak</code>，並驗證內容相同。</dd>
+<dt>解包與替換</dt><dd>解開 .pck，把替換包的檔案放進去，同名檔案會被取代。</dd>
+<dt>重新打包與驗證</dt><dd>打包成新 .pck，確認每個檔案都正確，才取代原檔，最後刪除暫存的解包資料夾。</dd>
+</dl>
+<p>任何一步失敗，原本的 <code>galleyhouse.pck</code> 都不會被改動。</p>
+
+<h2>還原</h2>
+<p>刪除修改過的 <code>galleyhouse.pck</code>，再把備份檔改名回 <code>galleyhouse.pck</code>。</p>
+
+<h2>注意</h2>
+<ul>
+<li>這是非官方的民間修補。遊戲更新後 .pck 會被覆蓋，需要重新執行一次。</li>
+<li>exe 沒有數位簽章，Windows 可能顯示「未知的發行者」警告。</li>
+</ul>
+
+<footer>非官方製作，與遊戲開發者無關。</footer>
+</main>
+<script>
+(function(){
+  var links=document.querySelectorAll('[data-gh]');
+  var h=location.hostname,repo=location.pathname.split('/')[1];
+  if(/\.github\.io$/.test(h)&&repo){
+    var base='https://github.com/'+h.split('.')[0]+'/'+repo;
+    links.forEach(function(a){a.href=base+a.getAttribute('data-gh');});
+  }else{
+    links.forEach(function(a){a.removeAttribute('href');});
+  }
+})();
+</script>
+</body>
+</html>
